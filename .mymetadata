@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="Free-Choice-v1"
+  id="myeclipse.1382862694841"
+  context-root="/Free-Choice-v1"
+  j2ee-spec="6.0"
+  archive="Free-Choice-v1.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
