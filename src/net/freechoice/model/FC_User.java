@@ -1,8 +1,18 @@
 package net.freechoice.model;
 
-public class User {
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="FC_User")
+public class FC_User implements Serializable {
+
+	private static final long serialVersionUID = -464078696567349754L;
 	
-	private int				id;
+	private int				_id;
 	private boolean			is_valid;//default true
 	
 	private	int				id_profile;//FK
@@ -14,17 +24,18 @@ public class User {
 	private String			password;
 
 	private String			tagline;
+	private String			appendix;
 	
-	public User() {
+	public FC_User() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getId() {
-		return id;
+	public int get_id() {
+		return _id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void set_id(int _id) {
+		this._id = _id;
 	}
 
 	public boolean isIs_valid() {
@@ -91,14 +102,21 @@ public class User {
 		this.tagline = tagline;
 	}
 	
+	public String getAppendix() {
+		return appendix;
+	}
+	public void setAppendix(String appendix) {
+		this.appendix = appendix;
+	}
+	
 	@Override
 	public boolean equals(Object o) {
-		return o instanceof User ? 
-				(((User)o).id == this.id ? true : false) 
+		return o instanceof FC_User ? 
+				(((FC_User)o)._id == this._id ? true : false) 
 				: false;
 	}
 	@Override
 	public int hashCode() {
-		return this.id;
+		return this._id;
 	}
 }

@@ -1,20 +1,40 @@
 package net.freechoice.model;
 
-public class Tag {
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="FC_Tag")
+public class FC_Tag implements Serializable {
 	
-	private int				id;
+
+	private static final long serialVersionUID = 1L;
+
+	private int				_id;
 	private boolean			is_valid;
 	private String			content;
 	
-	public Tag() {
+	public FC_Tag() {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public int get_id() {
+		return _id;
+	}
+	
+	public void set_id(int _id) {
+		this._id = _id;
+	}
+	
+	
 	public int getId() {
-		return id;
+		return _id;
 	}
 	public void setId(int id) {
-		this.id = id;
+		this._id = id;
 	}
 	public boolean isIs_valid() {
 		return is_valid;
@@ -31,12 +51,12 @@ public class Tag {
 	
 	@Override
 	public boolean equals(Object o) {
-		return o instanceof Tag ? 
-				(((Tag)o).id == this.id ? true : false) 
+		return o instanceof FC_Tag ? 
+				(((FC_Tag)o)._id == this._id ? true : false) 
 				: false;
 	}
 	@Override
 	public int hashCode() {
-		return this.id;
+		return this._id;
 	}
 }

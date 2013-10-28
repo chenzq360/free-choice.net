@@ -1,10 +1,18 @@
 package net.freechoice.model;
 
+import java.io.Serializable;
 import java.sql.Time;
 
-public class Comment {
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-	private int				id;
+@Entity
+@Table(name="FC_Comment")
+public class FC_Comment implements Serializable {
+
+	private static final long serialVersionUID = 5237392813785018862L;
+
+	private int				_id;
 	
 	private boolean			is_valid;//default true
 	
@@ -14,55 +22,67 @@ public class Comment {
 	private String			name;
 	private String			comment;
 	
-	public Comment() {
+	public FC_Comment() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getId() {
-		return id;
+	
+	public int get_id() {
+		return _id;
 	}
-	public void setId(int id) {
-		this.id = id;
+
+	public void set_id(int _id) {
+		this._id = _id;
 	}
+
 	public boolean isIs_valid() {
 		return is_valid;
 	}
+
 	public void setIs_valid(boolean is_valid) {
 		this.is_valid = is_valid;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public Time getTime_posted() {
 		return time_posted;
 	}
+
 	public void setTime_posted(Time time_posted) {
 		this.time_posted = time_posted;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getComment() {
 		return comment;
 	}
+
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
-		return o instanceof Comment ? 
-				(((Comment)o).id == this.id ? true : false) 
+		return o instanceof FC_Comment ? 
+				(((FC_Comment)o)._id == this._id ? true : false) 
 				: false;
 	}
 	@Override
 	public int hashCode() {
-		return this.id;
+		return this._id;
 	}
 }
