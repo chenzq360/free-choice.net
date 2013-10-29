@@ -8,9 +8,9 @@ public interface IPost_dao {
 	
 	int 			getPostCount();
 	
-	void			addPost(final FC_Post post);
-	void 			deletePost(final FC_Post post);
-	void 			updatePost(final FC_Post post);
+	void			addPost(FC_Post post);
+	void 			deletePost(FC_Post post);
+	void 			updatePost(FC_Post post);
 	
 	FC_Post 		getPostById(int id);
 	
@@ -18,8 +18,8 @@ public interface IPost_dao {
 	
 	List<FC_Post>	getPostByTag(int tagId);
 
-	List<FC_Post>	getPostByTags(int...tagIds);
 	
 	List<FC_Post> 	getPostByUser(int userId);
-	
+
+	List<FC_Post>	getPostByTags(int...tagIds);	
 }

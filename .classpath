@@ -22,5 +22,23 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/postgresql-9.1-903.jdbc4.jar"/>
+	<classpathentry kind="con" path="com.genuitec.runtime.library/com.genuitec.spring_3.1">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="WEB-INF/lib"/>
+			<attribute name="owner.project.facets" value="me.spring"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="com.genuitec.runtime.library/com.genuitec.spring.security_3.1">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="WEB-INF/lib"/>
+			<attribute name="owner.project.facets" value="me.spring"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="com.genuitec.runtime.library/com.genuitec.spring.webflow_2.3">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="WEB-INF/lib"/>
+			<attribute name="owner.project.facets" value="me.spring"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
