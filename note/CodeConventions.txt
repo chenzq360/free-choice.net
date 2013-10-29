@@ -1,5 +1,19 @@
 
-1. SQL convention:
+1. General:
+
+	platform and libraries standard:
+		Jre			7
+		Java EE 	6
+		MyEclipse 	2013 //optional
+		Hibernate 	4.1
+		Spring 		3.1
+		Struts		2
+	
+	all identifier (tables to class, column to field)
+		 in SQL and Java code have exactly the same name, no exception!
+		 
+
+2. SQL convention:
 
 	table with 'R_' perfix connects two/multi entities
 
@@ -19,7 +33,7 @@
 	primary key starts with '_', e.g. '_id'
 	foreign key ends with '_', e.g. 'id_user_'
 
-2. Java code convention:
+3. Java code convention:
 
 	When using Hibernate, conventions of the class to a table are:
 		all 'is_valid' has a default value: true(e.g. 'boolean is_valid = true;')
@@ -43,10 +57,8 @@
 	
 			List<FC_Xyz> getAllXyzs();
 	
-3. Other conventions:
+4. Other conventions:
 
-	all identifier (tables to class, column to field)
-		 in SQL and Java code have exactly the same name, no exception!
 	
 	
 	
