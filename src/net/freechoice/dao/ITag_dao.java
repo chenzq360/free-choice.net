@@ -10,6 +10,9 @@ public interface ITag_dao {
 
 	int 			getTagCount();
 	
+
+	
+	
 	String			getTagName();
 	
 	List<FC_Tag>	getAllTags();
