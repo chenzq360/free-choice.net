@@ -1,5 +1,6 @@
 
--- table with 'R_' perfix ralated two/multi entities
+-- table with 'R_' perfix connects two/multi entities
+
 -- table with 'FC_' (stands for 'free-choice') 
 -- 		indicate that this is an entity table
 
@@ -13,6 +14,28 @@
 -- timestamp 			 -> java.sql.TimeStamp
 
 -- gender:boolean. true for female, false for male.
+
+-- primary key starts with '_', e.g. _id
+-- foreign key ends with '_', e.g. id_user_
+
+-- all identifer (talbes to class, column to field)
+--	 in sql and java code have exactly the same name, no exception!
+
+-- in Hibernate, all 'is_valid' has a default value: true(e.g. 'boolean is_valid = true;')
+
+-- all entities have 7 default method, they are
+
+	-- int 			getXyzCount();
+	
+	-- FC_Account		getXyzById(int id);
+	
+	-- void			addXyz(FC_Xyz xyz);
+	-- void 			deleteAXyz(FC_Xyz xyz);
+	-- void 			deleteXyz(int xyzId);
+	-- void			updateXyz(FC_Xyz xyz);
+	
+	-- List<FC_Xyz> getAllXyzs();
+
 
 DROP TABLE IF EXISTS 	FC_Post		CASCADE;
 DROP TABLE IF EXISTS 	FC_Comment 	CASCADE;
