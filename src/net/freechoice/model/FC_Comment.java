@@ -1,9 +1,12 @@
 package net.freechoice.model;
 
 import java.io.Serializable;
-import java.sql.Time;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -11,13 +14,15 @@ import javax.persistence.Table;
 public class FC_Comment implements Serializable {
 
 	private static final long serialVersionUID = 5237392813785018862L;
-
-	private int				_id;
 	
-	private boolean			is_valid;//default true
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int				_id;
+
+	private boolean			is_valid = true;
 	
 	private String			email;
-	private Time			time_posted;
+	private Timestamp		time_posted;
 	
 	private String			name;
 	private String			comment;
@@ -51,11 +56,11 @@ public class FC_Comment implements Serializable {
 		this.email = email;
 	}
 
-	public Time getTime_posted() {
+	public Timestamp getTime_posted() {
 		return time_posted;
 	}
 
-	public void setTime_posted(Time time_posted) {
+	public void setTime_posted(Timestamp time_posted) {
 		this.time_posted = time_posted;
 	}
 

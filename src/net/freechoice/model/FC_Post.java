@@ -14,7 +14,7 @@ public class FC_Post implements Serializable {
 
 	private static final long serialVersionUID = -7328287539453747388L;
 
-	
+	@Id
 	private int				_id;
 	
 	private boolean 		is_valid;//default true

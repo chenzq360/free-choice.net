@@ -6,7 +6,13 @@ import java.sql.Date;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
+
+
+//@Column(name="is", columnDefinition="Decimal(10,2) default '100.00'")
 
 @Entity
 @Table(name="FC_Account")
@@ -14,9 +20,11 @@ public class FC_Account implements Serializable {
 
 	private static final long serialVersionUID = -8496712751903083205L;
 
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int 				_id;
-	private boolean				is_valid;
+	
+	private boolean				is_valid = true;
 	
 	private Date				date_create;
 	

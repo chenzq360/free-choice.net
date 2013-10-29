@@ -21,5 +21,6 @@
 			<attribute name="owner.project.facets" value="me.hibernate"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="lib/postgresql-9.1-903.jdbc4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
