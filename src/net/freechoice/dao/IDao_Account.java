@@ -7,7 +7,7 @@ import net.freechoice.model.FC_Account;
 
 
 
-public interface IDao_Account extends IDao<IDao_Account> {
+public interface IDao_Account extends IDao<FC_Account> {
 	
 	List<FC_Account> getAccountsOnDate(Date date);
 	

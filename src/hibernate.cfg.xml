@@ -39,8 +39,6 @@
 	<mapping class="net.freechoice.model.FC_Team" />
 	<mapping class="net.freechoice.model.FC_Transaction" />
 	<mapping class="net.freechoice.model.FC_User" />
-	<mapping class="net.freechoice.model.R_tag_post" />
-	<mapping class="net.freechoice.model.R_team_user" />
 </session-factory>
 
 </hibernate-configuration>

@@ -5,7 +5,7 @@ import java.util.List;
 
 import net.freechoice.model.FC_Post;
 
-public interface IDao_Post extends IDao<IDao_Post>{
+public interface IDao_Post extends IDao<FC_Post>{
 
 	List<FC_Post> 	getPostsByAutor(int userId);
 	

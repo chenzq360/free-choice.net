@@ -5,7 +5,7 @@ import java.util.List;
 import net.freechoice.model.FC_Project;
 
 
-public interface IDao_Project extends IDao<IDao_Project>{
+public interface IDao_Project extends IDao<FC_Project>{
 
 	List<FC_Project> getProjectsBySubject(String sbj);
 	

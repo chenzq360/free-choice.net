@@ -6,7 +6,7 @@ import net.freechoice.model.FC_Comment;
 
 
 
-public interface IDao_Comment extends IDao<IDao_Comment> {
+public interface IDao_Comment extends IDao<FC_Comment> {
 	
 	List<FC_Comment> getCommentsOfPost(int postId);
 
