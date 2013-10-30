@@ -10,9 +10,9 @@ public class HashUtil {
 		return hash;
 	}
 	
-	public static int hash64To32(long l) {
+	public static int hash64To32(long lg) {
 		
-		return (int)(l ^ (l >>> 32));
+		return (int)(lg ^ (lg >>> 32));
 	}
 	
     public static int hashIntArray(int seed, int[] data, int offset, int len) {

@@ -6,16 +6,20 @@ import net.freechoice.model.FC_User;
 
 
 
-public interface IUser_dao {
-	
-	int 			getUserCount();
-	
-	FC_User			getUserById(int id);
+public interface IDao_User extends IDao<IDao_User> {
 
-	// by poj , by team
+	List<FC_User> 	getUsersByName(String name);
+	
+	FC_User			getUserOfPost(int postId);
+	
 	List<FC_User> 	getUsersOfProject(int projectId);
 
 	List<FC_User> 	getUsersOfTeam(int teamId);
+	
+
 }
+
+
+
 
 

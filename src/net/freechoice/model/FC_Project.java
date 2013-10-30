@@ -5,8 +5,9 @@ import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 
 
 
@@ -20,6 +21,8 @@ public class FC_Project implements Serializable{
 	
 	private boolean			is_valid;
 	
+	@ManyToOne
+	@JoinColumn(name="_id")
 	private int 			id_manager_;
 	private int 			id_team_;
 	

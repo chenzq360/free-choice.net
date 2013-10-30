@@ -5,15 +5,7 @@ import java.util.List;
 
 import net.freechoice.model.FC_Tag;
 
-public interface ITag_dao {
-	
-
-	int 			getTagCount();
-	
-
-	
-
-	List<FC_Tag>	getAllTags();
+public interface IDao_Tag extends IDao<IDao_Tag>{
 	
 	List<String>	getTagsByName(String name);
 	

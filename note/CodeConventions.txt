@@ -47,21 +47,20 @@
 			private int _id;						//  ^ note here
 	
 	
-	all entities have 7 default method, they are
+	all entities have 9 default methods inheritated from 'IDao', they are
 
-			int 			getXyzCount();
-	
-			FC_Xyz			getXyzById(int id);
-	
-			void			addXyz(FC_Xyz xyz);
-			void 			deleteAXyz(FC_Xyz xyz);
-			void 			deleteXyz(int xyzId);
-			void			updateXyz(FC_Xyz xyz);
-	
-			List<FC_Xyz> 	getAllXyzs();
+			int 			getCount();
+			FC_Xyz			getById(int id);
+			void			add(T xyz);
+			void 			delete(T xyz);
+			void 			delete(int xyzId);
+			void			invalidate(T xyz);
+			void			invalidate(int xyzId);
+			void			update(T xyz);
+			List<FC_Xyz> 	getAllT();
 	
 	DAO name conventions:
-			DAO interface is named as IXxx_dao, e.g. 'IUser_dao'
+			DAO interface is named as IDao_Xyz, e.g. 'IDao_User'
 									  ^ interface
 				and thet are put into package net.freechoice.dao
 				

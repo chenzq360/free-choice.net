@@ -22,7 +22,7 @@ public class FC_Profile implements Serializable {
 	private Date			date_register;
 
 	private String			email;
-
+	private String			site_personal;
 	private String			name_first;
 	private String			name_last;
 	private String			contact_public;
@@ -67,6 +67,16 @@ public class FC_Profile implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getSite_personal() {
+		return site_personal;
+	}
+
+
+	public void setSite_personal(String site_personal) {
+		this.site_personal = site_personal;
+	}
+
 
 	public String getName_first() {
 		return name_first;

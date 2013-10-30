@@ -9,20 +9,38 @@
 
 
 
-	<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-	<property name="connection.url">jdbc:postgresql://localhost:5432/free-choice-v1</property>
+	<property name="dialect">
+		org.hibernate.dialect.PostgreSQLDialect
+	</property>
+	<property name="connection.url">
+		jdbc:postgresql://localhost:5432/free-choice-v1
+	</property>
 	<property name="connection.username">bcgh2013</property>
 	<property name="connection.password">2013.bcgh.start</property>
-	<property name="connection.driver_class">org.postgresql.Driver</property>
+	<property name="connection.driver_class">
+		org.postgresql.Driver
+	</property>
 
 	<property name="c3p0.max_size">20</property>
 	<property name="c3p0.min_size">1</property>
 	<property name="c3p0.timeout">4000</property>
 	<property name="c3p0.max_statements">80</property>
 	<property name="hbm2ddl.auto">update</property>
-	<property name="myeclipse.connection.profile">FC_PG_DRIVER</property>
+	<property name="myeclipse.connection.profile">
+		FC_PG_DRIVER
+	</property>
 
 	<mapping class="net.freechoice.model.FC_Comment" />
+	<mapping class="net.freechoice.model.FC_Account" />
+	<mapping class="net.freechoice.model.FC_Post" />
+	<mapping class="net.freechoice.model.FC_Profile" />
+	<mapping class="net.freechoice.model.FC_Project" />
+	<mapping class="net.freechoice.model.FC_Tag" />
+	<mapping class="net.freechoice.model.FC_Team" />
+	<mapping class="net.freechoice.model.FC_Transaction" />
+	<mapping class="net.freechoice.model.FC_User" />
+	<mapping class="net.freechoice.model.R_tag_post" />
+	<mapping class="net.freechoice.model.R_team_user" />
 </session-factory>
 
 </hibernate-configuration>

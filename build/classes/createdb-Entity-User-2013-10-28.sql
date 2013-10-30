@@ -20,7 +20,7 @@ CREATE TABLE FC_Profile
 
 	date_register	date		NULL NULL,
 	email			varchar(40) NULL NULL,
-
+	site_personal	text,
 	name_first		varchar(30)			,
 	name_last		varchar(30)			,
 	contact_public	text				,
@@ -57,7 +57,6 @@ CREATE TABLE FC_User
 	is_valid 		boolean		NOT NULL DEFAULT true,
 
 	id_profile_		integer		NOT NULL REFERENCES FC_Profile(_id),
-	id_account_		integer		NOT NULL REFERENCES FC_Account(_id),
 
 	path_photo		text		NOT NULL, --default???
 	name_login		varchar(30) NOT NULL UNIQUE,

@@ -8,11 +8,7 @@ import net.freechoice.model.FC_Transaction;
 
 
 
-public interface ITransaction_dao {
-
-	
-	
-
+public interface IDao_Transaction extends IDao<IDao_Transaction>{
 
 	List<FC_Transaction> getTransactionsOfUser(int userId);
 

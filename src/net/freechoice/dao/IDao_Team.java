@@ -5,9 +5,8 @@ import java.util.List;
 import net.freechoice.model.FC_Team;
 
 
-public interface ITeam_dao {
+public interface IDao_Team extends IDao<IDao_Team>{
 
-	
 	
 	List<FC_Team>	getTeamsOfUser(int userId);
 	
