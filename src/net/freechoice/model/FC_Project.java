@@ -25,6 +25,8 @@ public class FC_Project implements Serializable{
 	
 	private Date			date_created;
 	
+	private String			name;
+	
 	private String			subject;
 	
 	private String			appendix;
@@ -57,6 +59,14 @@ public class FC_Project implements Serializable{
 	public void setDate_created(Date date_created) {
 		this.date_created = date_created;
 	}
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getSubject() {
 		return subject;
 	}

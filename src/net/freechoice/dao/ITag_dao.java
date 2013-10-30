@@ -12,10 +12,14 @@ public interface ITag_dao {
 	
 
 	
-	
-	String			getTagName();
-	
+
 	List<FC_Tag>	getAllTags();
+	
+	List<String>	getTagsByName(String name);
+	
+	String			getTagName(int tagId);
+	
+	List<String> 	getAllTagNames();
 	
 	List<FC_Tag> 	getTagsOfPost(int postId);
 	

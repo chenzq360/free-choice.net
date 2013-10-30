@@ -101,6 +101,7 @@ CREATE TABLE FC_Project
 	id_team_ 		integer		REFERENCES FC_Team(_id),--null if only one participant
 	date_created	date 		NOT NULL,
 	
+	name 			text		NOT NULL,
 	subject			text		NOT	NULL,
 	appendix		text
 );

@@ -1,5 +1,6 @@
 package net.freechoice.dao;
 
+import java.sql.Date;
 import java.util.List;
 
 import net.freechoice.model.FC_Account;
@@ -18,4 +19,9 @@ public interface IAccount_dao {
 	void			updateAccount(FC_Account account);
 	
 	List<FC_Account> getAllAccounts();
+
+	List<FC_Account> getAccountsOnDate(Date date);
+	
+	List<FC_Account> getAccountsOfUser(int userId);
+
 }

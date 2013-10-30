@@ -14,17 +14,21 @@ public interface IPost_dao {
 	void 			deletePost(FC_Post post);
 	void 			deletePost(int postId);
 	void 			updatePost(FC_Post post);
-	
-	
-	List<FC_Post>	getPostByMonth(int month);
-	
-	List<FC_Post>	getPostByTag(int tagId);
-	////////????
-	List<FC_Post>	getPostByTags(int...tagIds);
-	
-	List<FC_Post> 	getPostByUser(int userId);
 
-	List<FC_Post> 	getPostByTeam(int teamId);
+	List<FC_Post>	getAllPosts();
+	
+	List<FC_Post>	getPostsByMonth(int month);
+	
+	List<FC_Post>	getPostsOfTag(int tagId);
 
-	List<FC_Post> 	getPostByProject(int projectId);
+	List<FC_Post>	getPostsOfTags(List<Integer> tagIds);
+	
+	List<FC_Post> 	getPostsOfUser(int userId);
+
+	List<FC_Post> 	getPostsOfTeam(int teamId);
+
+	List<FC_Post> 	getPostsOfProject(int projectId);
 }
+
+
+

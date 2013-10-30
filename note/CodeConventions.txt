@@ -35,6 +35,9 @@
 
 3. Java code convention:
 
+	Class names and Field names follow the usual convention(e.g. XxxYxxZzz),
+	except for models(to consist with sql)
+
 	When using Hibernate, conventions of the class to a table are:
 		all 'is_valid' has a default value: true(e.g. 'boolean is_valid = true;')
 		and the annotation for the primary key is
@@ -57,6 +60,40 @@
 	
 			List<FC_Xyz> getAllXyzs();
 	
+	DAO name conventions:
+			DAO interface is named as IXxx_dao
+									  ^ interface
+				and thet are put into package net.freechoice.dao
+				
+			DAO implementation is named as DAO_Xxx
+				and thet are put into package net.freechoice.dao.impl
+				
+	DAO 'get' convention:
+		
+		get Xxx with parameter z such that z is one field of Xxx, use 'By'
+				getXxxByZzz(zzz)
+			e.g.	
+				List<FC_Post>	getPostsByMonth(int month);
+		
+		get Xxx with parameter z such that z is not any field of Xxx
+		(likely a entity related to Xxx), use 'Of'
+			e.g.
+				List<FC_Post>	getPostsOfTag(int tagId);
+		
+		get Xxx with parameter z such that z is of time type, use 'on'
+			e.g.
+				List<FC_Transaction> getTransactionsOnDate(Date date);
+	
+		If the given parameter is not the unique for this Object(i.e. not the id)
+		returns a List
+	
+		when return type is a list, user suffix 's'
+				getXxxsByYyy or getXxxsOfYyy
+			e.g.				  ^
+				List<FC_Post>	getPostsOfTag(int tagId);
+										^
+			Otherwise do not add 's' or 'es'.				
+						
 4. Other conventions:
 
 	
