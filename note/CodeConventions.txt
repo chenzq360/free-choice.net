@@ -3,7 +3,7 @@
 
 	platform and libraries standard:
 		Jre			7
-		Java EE 	6
+		Java EE 	5
 		MyEclipse 	2013 //optional
 		Hibernate 	4.1
 		Spring 		3.1
@@ -13,7 +13,7 @@
 		 in SQL and Java code have exactly the same name, no exception!
 		 
 
-2. SQL convention:
+2. SQL code convention:
 
 	table with 'R_' perfix connects two/multi entities
 
@@ -36,7 +36,7 @@
 3. Java code convention:
 
 	Class names and Field names follow the usual convention(e.g. XxxYxxZzz),
-	except for models(to consist with sql)
+	except for models(to consist with SQL)
 
 	When using Hibernate, conventions of the class to a table are:
 		all 'is_valid' has a default value: true(e.g. 'boolean is_valid = true;')
@@ -44,28 +44,28 @@
 		
 			@Id
 			@GeneratedValue(strategy = GenerationType.IDENTITY)
-			private int _id;
+			private int _id;						//  ^ note here
 	
 	
 	all entities have 7 default method, they are
 
 			int 			getXyzCount();
 	
-			FC_Xyz		getXyzById(int id);
+			FC_Xyz			getXyzById(int id);
 	
 			void			addXyz(FC_Xyz xyz);
 			void 			deleteAXyz(FC_Xyz xyz);
 			void 			deleteXyz(int xyzId);
 			void			updateXyz(FC_Xyz xyz);
 	
-			List<FC_Xyz> getAllXyzs();
+			List<FC_Xyz> 	getAllXyzs();
 	
 	DAO name conventions:
-			DAO interface is named as IXxx_dao
+			DAO interface is named as IXxx_dao, e.g. 'IUser_dao'
 									  ^ interface
 				and thet are put into package net.freechoice.dao
 				
-			DAO implementation is named as DAO_Xxx
+			DAO implementation is named as DAO_Xxx, 'DAO_User'
 				and thet are put into package net.freechoice.dao.impl
 				
 	DAO 'get' convention:
@@ -75,8 +75,8 @@
 			e.g.	
 				List<FC_Post>	getPostsByMonth(int month);
 		
-		get Xxx with parameter z such that z is not any field of Xxx
-		(likely a entity related to Xxx), use 'Of'
+		get Xxx with parameter z such that z is not any field of Xxx(likely a entity 
+		 related to Xxx), use 'Of'
 			e.g.
 				List<FC_Post>	getPostsOfTag(int tagId);
 		
@@ -84,14 +84,14 @@
 			e.g.
 				List<FC_Transaction> getTransactionsOnDate(Date date);
 	
-		If the given parameter is not the unique for this Object(i.e. not the id)
-		returns a List
+		If the given parameter is not the unique field of this Object(i.e. not the id)
+		returns a List, even if there will always be one element only, in this list
 	
 		when return type is a list, user suffix 's'
 				getXxxsByYyy or getXxxsOfYyy
-			e.g.				  ^
+			e.g.				      ^
 				List<FC_Post>	getPostsOfTag(int tagId);
-										^
+									   ^
 			Otherwise do not add 's' or 'es'.				
 						
 4. Other conventions:

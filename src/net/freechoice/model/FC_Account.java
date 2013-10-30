@@ -19,6 +19,7 @@ import javax.persistence.Table;
 public class FC_Account implements Serializable {
 
 	private static final long serialVersionUID = -8496712751903083205L;
+	
 	private static final int serialID32 = (int)(serialVersionUID ^ (serialVersionUID >>> 32));
 
 	@Id
