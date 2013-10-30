@@ -1,6 +1,9 @@
 package net.freechoice.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import net.freechoice.util.HashUtil;
@@ -10,7 +13,15 @@ import net.freechoice.util.HashUtil;
 @Table(name="R_tag_post")
 public class R_tag_post {
 	
+	@Id
+	@ManyToMany
+	@JoinColumn(name="_id")
 	private int			id_tag_;
+	
+	
+	@Id
+	@ManyToMany
+	@JoinColumn(name="_id")
 	private int			id_post_;
 	
 	public R_tag_post() {

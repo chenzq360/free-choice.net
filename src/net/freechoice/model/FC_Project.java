@@ -21,6 +21,7 @@ public class FC_Project implements Serializable{
 	private boolean			is_valid;
 	
 	private int 			id_manager_;
+	private int 			id_team_;
 	
 	private Date			date_created;
 	
@@ -68,7 +69,14 @@ public class FC_Project implements Serializable{
 	public void setAppendix(String appendix) {
 		this.appendix = appendix;
 	}
+	
+	public int getId_team_() {
+		return id_team_;
+	}
 
+	public void setId_team_(int id_team_) {
+		this.id_team_ = id_team_;
+	}
 	
 	@Override
 	public boolean equals(Object o) {
@@ -80,5 +88,7 @@ public class FC_Project implements Serializable{
 	public int hashCode() {
 		return this._id;
 	}
+
+
 	
 }

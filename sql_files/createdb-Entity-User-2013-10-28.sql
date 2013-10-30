@@ -9,10 +9,7 @@ DROP TABLE IF EXISTS 	FC_Profile	CASCADE;
 DROP TABLE IF EXISTS 	FC_Account	CASCADE;
 DROP TABLE IF EXISTS	FC_Transaction	CASCADE;
 
-DROP TABLE IF EXISTS	R_project_team;
-DROP TABLE IF EXISTS	R_project_user;
 DROP TABLE IF EXISTS	R_team_user;
-DROP TABLE IF EXISTS	R_account_transaction;
 
 
 ------------------------  User --------------------------------------
@@ -48,6 +45,8 @@ CREATE TABLE FC_Transaction
 	_id				serial		PRIMARY KEY,
 	is_valid		boolean		NOT NULL DEFAULT true,
 
+	id_account_		integer		NOT NULL REFERENCES FC_Account(_id),
+
 	time_committed	timestamp	NOT NULL,
 	amount			money		NOT NULL
 );
@@ -71,17 +70,6 @@ CREATE TABLE FC_User
 
 ------------------------  User --------------------------------------
 
-CREATE TABLE FC_Project
-(
-	_id				serial		PRIMARY	KEY,
-	is_valid		boolean		NOT NULL DEFAULT true,
-
-	id_manager_		integer		NOT NULL REFERENCES FC_User(_id),
-	date_created	date 		NOT NULL,
-	
-	subject			text		NOT	NULL,
-	appendix		text
-);
 
 CREATE TABLE FC_Team
 (
@@ -96,22 +84,6 @@ CREATE TABLE FC_Team
 	appendix		text
 );
 
-
-CREATE TABLE R_project_team
-(
-	id_project_		integer		NOT NULL REFERENCES FC_Project(_id),
-	id_team_		integer		NOT NULL REFERENCES FC_Team(_id),
-	PRIMARY KEY(id_project_, id_team_)
-);
-
-CREATE TABLE R_project_user
-(
-	id_project_		integer		NOT NULL REFERENCES FC_Project(_id),
-	id_user_		integer		NOT NULL REFERENCES FC_User(_id),
-	PRIMARY KEY(id_project_, id_user_)
-);
-
-
 CREATE TABLE R_team_user
 (
 	id_user_		integer		NOT NULL REFERENCES FC_User(_id),
@@ -120,11 +92,16 @@ CREATE TABLE R_team_user
 	PRIMARY Key(id_team_, id_user_)
 );
 
-CREATE TABLE R_account_transaction
+CREATE TABLE FC_Project
 (
-	id_transaction_	integer		NOT NULL REFERENCES FC_Transaction(_id),
-	id_account_		integer		NOT NULL REFERENCES FC_Account(_id),
+	_id				serial		PRIMARY	KEY,
+	is_valid		boolean		NOT NULL DEFAULT true,
 
-	PRIMARY Key(id_transaction_, id_account_)
+	id_manager_		integer		NOT NULL REFERENCES FC_User(_id),
+	id_team_ 		integer		REFERENCES FC_Team(_id),--null if only one participant
+	date_created	date 		NOT NULL,
+	
+	subject			text		NOT	NULL,
+	appendix		text
 );
 

@@ -5,6 +5,8 @@ import java.sql.Time;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -18,6 +20,9 @@ public class FC_Post implements Serializable {
 	private int				_id;
 	
 	private boolean 		is_valid;//default true
+	
+	@ManyToOne
+	@JoinColumn(name="_id")
 	private int				id_author;// FK
 	
 	private Time			time_posted;//timestamp

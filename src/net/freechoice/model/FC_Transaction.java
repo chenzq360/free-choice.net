@@ -6,6 +6,8 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -17,6 +19,10 @@ public class FC_Transaction implements Serializable {
 	
 	private int 			_id;
 	private boolean			is_valid;
+	
+	@ManyToOne
+	@JoinColumn(name="_id")
+	private int 			id_account_;
 	
 	private Timestamp		time_committed;
 	private BigDecimal		amount;
@@ -58,6 +64,15 @@ public class FC_Transaction implements Serializable {
 		this.amount = amount;
 	}
 
+	public int getId_account_() {
+		return id_account_;
+	}
+
+
+	public void setId_account_(int id_account_) {
+		this.id_account_ = id_account_;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		return o instanceof FC_Transaction ? 
@@ -68,6 +83,7 @@ public class FC_Transaction implements Serializable {
 	public int hashCode() {
 		return this._id;
 	}
+
 
 
 }

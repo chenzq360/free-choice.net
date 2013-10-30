@@ -41,8 +41,6 @@ DROP TABLE IF EXISTS 	FC_Post		CASCADE;
 DROP TABLE IF EXISTS 	FC_Comment 	CASCADE;
 DROP TABLE IF EXISTS 	FC_Tag		CASCADE;
 
-DROP TABLE IF EXISTS	R_user_post;
-DROP TABLE IF EXISTS	R_post_comment;
 DROP TABLE IF EXISTS	R_tag_post;
 
 CREATE TABLE FC_Post
@@ -50,7 +48,8 @@ CREATE TABLE FC_Post
 	_id				serial		PRIMARY KEY,
 
 	is_valid		boolean 	NOT NULL DEFAULT true,
-	id_author		integer		NOT NULL,
+
+	id_author_		integer		NOT NULL REFERENCES FC_User(_id),
 	
 	month_posted	smallint	NOT NULL 
 								CHECK(month_posted > 0 
@@ -80,6 +79,8 @@ CREATE TABLE FC_Comment
 	_id				serial		PRIMARY KEY,
 	is_valid		boolean		NOT NULL DEFAULT true,
 
+	id_post_		integer		NOT NULL REFERENCES FC_Post(_id),
+
 	time_posted		timestamp	NOT NULL,
 	email 			varchar(40) NOT NULL,
 	name 			varchar(30) NOT NULL,
@@ -87,27 +88,10 @@ CREATE TABLE FC_Comment
 );
 
 
-
-CREATE TABLE R_user_post
-(
-	id_user_		integer		NOT NULL REFERENCES FC_User(_id),
-	id_post_		integer		NOT NULL REFERENCES FC_Post(_id),
-
-	PRIMARY KEy(id_user_, id_post_)
-);
-
-CREATE TABLE R_post_comment
-(
-	id_post_		integer		NOT NULL REFERENCES FC_Post(_id),
-	id_comment_		integer		NOT NULL REFERENCES FC_Comment(_id),
-
-	PRIMARY KEY (id_post_, id_comment_)
-);
-
 CREATE TABLE R_tag_post
 (
-	id_post			integer		NOT NULL REFERENCES FC_Post(_id),
-	id_tag			integer		NOT NULL REFERENCES FC_Tag(_id),
+	id_post_		integer		NOT NULL REFERENCES FC_Post(_id),
+	id_tag_			integer		NOT NULL REFERENCES FC_Tag(_id),
 
-	PRIMARY KEY(id_post, id_tag)
+	PRIMARY KEY(id_post_, id_tag_)
 );

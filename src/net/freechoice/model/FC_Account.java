@@ -19,6 +19,7 @@ import javax.persistence.Table;
 public class FC_Account implements Serializable {
 
 	private static final long serialVersionUID = -8496712751903083205L;
+	private static final int serialID32 = (int)(serialVersionUID ^ (serialVersionUID >>> 32));
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -87,10 +88,10 @@ public class FC_Account implements Serializable {
 				(((FC_Account)o)._id == this._id ? true : false) 
 				: false;
 	}
+    
 	@Override
 	public int hashCode() {
-		return this._id;
+		return this._id * 31 + serialID32;
 	}
-
 	
 }
