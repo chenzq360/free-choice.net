@@ -1,97 +1,43 @@
 package net.freechoice.dao.impl;
 
-import java.io.Serializable;
 import java.util.List;
-
-import javax.persistence.criteria.From;
 
 import net.freechoice.dao.IDao_User;
 import net.freechoice.model.FC_User;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.sql.Select;
-import org.springframework.orm.hibernate3.HibernateTemplate;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
-import bsh.This;
 
 
 
-public class Dao_User extends HibernateDaoSupport implements IDao_User {
+public class Dao_User extends DaoAux<FC_User> implements IDao_User {
 
-	private HibernateTemplate hiTemp;
-	
-	void init(SessionFactory sf) {
-		this.hiTemp = new HibernateTemplate(sf);
+	public Dao_User() {
+		super(FC_User.class);
+	}
+	public Dao_User(SessionFactory sessionFactory) {
+		super(FC_User.class);
+		setSessionFactory(sessionFactory);
 	}
 	
-	@Override
-	public int getCount() {
-		return(
-				(Long)getSession()
-					.createQuery("select count(*) from FC_User" 
-									+ "where is_valid = true").uniqueResult()
-				).intValue();
-	}
-
-	@Override
-	public int getAllCount() {
-		return(
-				(Long)getSession()
-					.createQuery("select count(*) from FC_User").uniqueResult()
-				).intValue();
-	}
-
-	@Override
-	public FC_User getById(int id) {
-		return hiTemp.get(FC_User.class, id);
-	}
-
-	@Override
-	public Serializable add(FC_User entity) {
-		return hiTemp.save(entity);
-	}
-
-	@Override
-	public void delete(FC_User entity) {
-		hiTemp.delete(entity);
-	}
-
-	@Override
-	public void delete(int id) {
-		hiTemp.delete(this.getById(id));
-	}
-
 	@Override
 	public void invalidate(FC_User entity) {
+		
 		entity.setIs_valid(false);
-		hiTemp.update(entity);
+		getHibernateTemplate().update(entity);
 	}
 
 	@Override
 	public void invalidate(int id) {
+		
 		FC_User usr = this.getById(id);
 		usr.setIs_valid(false);
-		hiTemp.update(usr);
-	}
-
-	@Override
-	public void update(FC_User entity) {
-		hiTemp.update(entity);
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<FC_User> getAll() {
-		return (List<FC_User>)getSession().createSQLQuery(
-				"select from FC_User")
-				.addEntity(FC_User.class)
-				.list();
+		getHibernateTemplate().update(usr);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<FC_User> getUsersByName(String name) {
+		
 		return (List<FC_User>)getSession().createSQLQuery(
 				"select * from FC_User where name = '" + name + "'")
 				.addEntity(FC_User.class)
@@ -108,9 +54,22 @@ public class Dao_User extends HibernateDaoSupport implements IDao_User {
 				.list().get(0);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<FC_User> getUsersOfProject(int projectId) {
-		return null;
+		return (List<FC_User>) getSession().createSQLQuery(
+		 "SELECT * FROM FC_User WHERE _id IN"
+		+"(	"
+		+"	(SELECT id_manager_ FROM FC_Project "
+		+"		WHERE FC_Project._id = " + projectId
+		+"	) "
+		+"	UNION "
+		+"	(SELECT id_user_ FROM R_team_user WHERE id_team_ in"
+		+"		(SELECT id_team_ from FC_Project WHERE FC_Project._id = "+projectId+ ")"
+		+"	)"
+		+")"
+				).addEntity(FC_User.class)
+				.list();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -119,9 +78,8 @@ public class Dao_User extends HibernateDaoSupport implements IDao_User {
 		
 		return (List<FC_User>) getSession().createSQLQuery(
 				"select * From FC_User where FC_User._id in "
-				+ " ( select id_user_ from R_team_user where FC_Post.id_team_ = " + teamId + " ) "
+				+ " ( select id_user_ from R_team_user where R_team_user.id_team_ = " + teamId + " ) "
 				).addEntity(FC_User.class)
 				.list();
 	}
-
 }

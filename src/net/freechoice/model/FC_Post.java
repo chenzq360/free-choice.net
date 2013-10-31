@@ -3,20 +3,23 @@ package net.freechoice.model;
 import java.io.Serializable;
 import java.sql.Time;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="FC_Post")
-public class FC_Post implements Serializable {
+public class FC_Post implements Serializable, FreeChoiceEntity{
 
 	private static final long serialVersionUID = -7328287539453747388L;
 
 	@Id
+	@OneToMany(mappedBy="id_post_", targetEntity=FC_Comment.class, cascade=CascadeType.ALL)
 	private int				_id;
 	
 	private boolean 		is_valid;//default true
@@ -39,22 +42,22 @@ public class FC_Post implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
+	@Override
 	public int get_id() {
 		return _id;
 	}
 
-
+	@Override
 	public void set_id(int _id) {
 		this._id = _id;
 	}
 
-
+	@Override
 	public boolean isIs_valid() {
 		return is_valid;
 	}
 
-
+	@Override
 	public void setIs_valid(boolean is_valid) {
 		this.is_valid = is_valid;
 	}

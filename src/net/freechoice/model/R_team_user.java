@@ -19,13 +19,13 @@ public class R_team_user implements Serializable {
 	private static final long serialVersionUID = -729119141361332071L;
 
 	@Id
-	@ManyToMany
-	@JoinColumn(name="_id")
+//	@ManyToMany
+//	@JoinColumn(name="_id")
 	private int 			id_team_;
 	
 	@Id
-	@ManyToMany
-	@JoinColumn(name="_id")
+//	@ManyToMany
+//	@JoinColumn(name="_id")
 	private int				id_user_;
 	
 	public R_team_user() {

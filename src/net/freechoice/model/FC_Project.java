@@ -5,7 +5,11 @@ import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -13,17 +17,22 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="FC_Project")
-public class FC_Project implements Serializable{
+public class FC_Project implements Serializable, FreeChoiceEntity {
 
 	private static final long serialVersionUID = -1314152664859372835L;
 
+	
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int				_id;
 	
-	private boolean			is_valid;
+	private boolean			is_valid = true;
 	
 	@ManyToOne
 	@JoinColumn(name="_id")
 	private int 			id_manager_;
+	
 	private int 			id_team_;
 	
 	private Date			date_created;
@@ -38,15 +47,22 @@ public class FC_Project implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
+	@Override
 	public int get_id() {
 		return _id;
 	}
+
+	@Override
 	public void set_id(int _id) {
 		this._id = _id;
 	}
+
+	@Override
 	public boolean isIs_valid() {
 		return is_valid;
 	}
+
+	@Override
 	public void setIs_valid(boolean is_valid) {
 		this.is_valid = is_valid;
 	}

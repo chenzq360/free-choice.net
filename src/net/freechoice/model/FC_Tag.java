@@ -3,6 +3,8 @@ package net.freechoice.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,9 +16,13 @@ public class FC_Tag implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int				_id;
-	private boolean			is_valid;
+	
+	private boolean			is_valid = true;
+	
 	private String			content;
 	
 	public FC_Tag() {

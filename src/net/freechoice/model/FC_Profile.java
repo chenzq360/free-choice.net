@@ -3,7 +3,12 @@ package net.freechoice.model;
 import java.io.Serializable;
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -14,11 +19,13 @@ public class FC_Profile implements Serializable {
 
 	private static final long serialVersionUID = 5833107501965523629L;
 	
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@OneToOne(mappedBy="id_profile_", targetEntity=FC_User.class, cascade=CascadeType.ALL)
 	private int				_id;
-	private boolean			is_valid;
-//	private int				id_user; // has user been invalidated, this shall be invalidated respectively
 	
+	private boolean			is_valid = true;
+
 	private Date			date_register;
 
 	private String			email;

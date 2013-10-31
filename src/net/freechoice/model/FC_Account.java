@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -16,7 +17,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="FC_Account")
-public class FC_Account implements Serializable {
+public class FC_Account implements Serializable , FreeChoiceEntity{
 
 	private static final long serialVersionUID = -8496712751903083205L;
 	
@@ -36,24 +37,22 @@ public class FC_Account implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	
+	@Override
 	public int get_id() {
 		return _id;
 	}
 
-
-
+	@Override
 	public void set_id(int _id) {
 		this._id = _id;
 	}
 
-
-
+	@Override
 	public boolean isIs_valid() {
 		return is_valid;
 	}
 
-
-
+	@Override
 	public void setIs_valid(boolean is_valid) {
 		this.is_valid = is_valid;
 	}

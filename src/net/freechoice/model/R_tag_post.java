@@ -14,14 +14,14 @@ import net.freechoice.util.HashUtil;
 public class R_tag_post {
 	
 	@Id
-	@ManyToMany
-	@JoinColumn(name="_id")
+//	@ManyToMany
+//	@JoinColumn(name="_id")
 	private int			id_tag_;
 	
 	
 	@Id
-	@ManyToMany
-	@JoinColumn(name="_id")
+//	@ManyToMany
+//	@JoinColumn(name="_id")
 	private int			id_post_;
 	
 	public R_tag_post() {

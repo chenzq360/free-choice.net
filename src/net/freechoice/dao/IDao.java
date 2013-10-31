@@ -3,31 +3,41 @@ package net.freechoice.dao;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IDao<T> {
+import net.freechoice.model.FreeChoiceEntity;
+
+public interface IDao<T extends FreeChoiceEntity> {
 
 	/**
 	 * 
-	 * @return valid only
+	 * @return valid entities only
 	 */
 	int 			getCount();
 	
 	
 	/**
 	 * 
-	 * @return columns in table
+	 * @return all entities in table
 	 */
 	int 			getAllCount();
+
+	List<T> 		getAll();
+	
+	List<T> 		getAllValid();
+	
 	
 	T				getById(int id);
 	
-	Serializable	add(T entity);
-	void 			delete(T entity);
-	void 			delete(int id);
-	void			invalidate(T entity);
-	void			invalidate(int id);
-	void			update(T entity);
+	Serializable	save(T entity);
 	
-	List<T> 		getAll();
+	void 			delete(T entity);
+	
+	void 			delete(int id);
+
+	void			invalidate(T entity);
+	
+	void			invalidate(int id);
+	
+	void			update(T entity);
 }
 
 
