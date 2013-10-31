@@ -1,6 +1,6 @@
 package net.freechoice.model;
 
-public interface FreeChoiceEntity {
+public interface IModel {
 
 	public int get_id();
 	

@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="FC_User")
-public class FC_User implements Serializable, FreeChoiceEntity{
+public class FC_User implements Serializable, IModel{
 
 	private static final long serialVersionUID = -464078696567349754L;
 	
@@ -141,9 +141,11 @@ public class FC_User implements Serializable, FreeChoiceEntity{
 
 	@Override
 	public boolean equals(Object o) {
-		return o instanceof FC_User ? 
-				(((FC_User)o)._id == this._id ? true : false) 
-				: false;
+		
+		return this == o ? true 
+				: o instanceof FC_User ? 
+						(((FC_User)o)._id == this._id ? true : false)
+						: false;
 	}
 	@Override
 	public int hashCode() {

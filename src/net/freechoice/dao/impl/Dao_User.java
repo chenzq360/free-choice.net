@@ -14,6 +14,7 @@ public class Dao_User extends DaoAux<FC_User> implements IDao_User {
 	public Dao_User() {
 		super(FC_User.class);
 	}
+	
 	public Dao_User(SessionFactory sessionFactory) {
 		super(FC_User.class);
 		setSessionFactory(sessionFactory);

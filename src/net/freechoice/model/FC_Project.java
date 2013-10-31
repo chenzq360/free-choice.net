@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="FC_Project")
-public class FC_Project implements Serializable, FreeChoiceEntity {
+public class FC_Project implements Serializable, IModel {
 
 	private static final long serialVersionUID = -1314152664859372835L;
 

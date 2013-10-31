@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="FC_Account")
-public class FC_Account implements Serializable , FreeChoiceEntity{
+public class FC_Account implements Serializable , IModel{
 
 	private static final long serialVersionUID = -8496712751903083205L;
 	
@@ -81,12 +81,16 @@ public class FC_Account implements Serializable , FreeChoiceEntity{
 		this.balance = balance;
 	}
 	
-	
 	@Override
 	public boolean equals(Object o) {
-		return o instanceof FC_Account ? 
-				(((FC_Account)o)._id == this._id ? true : false) 
-				: false;
+		
+		if (this == o) {
+			return true;
+		} else if (o instanceof FC_Account) {
+			return ((FC_Account)o)._id == this._id;
+		} else {
+			return false;
+		}
 	}
     
 	@Override

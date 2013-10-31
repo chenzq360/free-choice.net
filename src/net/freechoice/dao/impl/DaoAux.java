@@ -4,14 +4,15 @@ import java.io.Serializable;
 import java.util.List;
 
 import net.freechoice.dao.IDao;
-import net.freechoice.model.FreeChoiceEntity;
+import net.freechoice.model.IModel;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-public class DaoAux<T extends FreeChoiceEntity> 
+public class DaoAux<T extends IModel> 
 				extends HibernateDaoSupport implements IDao<T>{
 
 	private Class<T>	type;
+	private String tableName = type.getSimpleName();
 	
 	DaoAux(Class<T> t) {
 		this.type = t;
@@ -21,7 +22,7 @@ public class DaoAux<T extends FreeChoiceEntity>
 	public int getCount() {
 		return(
 			(Long)getSession()
-				.createQuery("select count(*) from " + type.getSimpleName()
+				.createQuery("select count(*) from " + tableName
 								+ "where is_valid = true")
 								.uniqueResult()
 			).intValue();
@@ -31,7 +32,7 @@ public class DaoAux<T extends FreeChoiceEntity>
 	public	int getAllCount() {
 		return(
 			(Long)getSession()
-				.createQuery("select count(*) from " + type.getSimpleName())
+				.createQuery("select count(*) from " + tableName)
 				.uniqueResult()
 			).intValue();
 	}
@@ -39,7 +40,7 @@ public class DaoAux<T extends FreeChoiceEntity>
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<T> getAll() {
-		return getHibernateTemplate().find("from " + type.getSimpleName());
+		return getHibernateTemplate().find("from " + tableName);
 	}
 	
 	@Override

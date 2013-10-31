@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="FC_Profile")
-public class FC_Profile implements Serializable {
+public class FC_Profile implements Serializable, IModel{
 
 	private static final long serialVersionUID = 5833107501965523629L;
 	
@@ -42,19 +42,19 @@ public class FC_Profile implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	@Override
 	public int get_id() {
 		return _id;
 	}
-
+	@Override
 	public void set_id(int _id) {
 		this._id = _id;
 	}
-
+	@Override
 	public boolean isIs_valid() {
 		return is_valid;
 	}
-
+	@Override
 	public void setIs_valid(boolean is_valid) {
 		this.is_valid = is_valid;
 	}
