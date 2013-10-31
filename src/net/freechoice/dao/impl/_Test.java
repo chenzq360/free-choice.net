@@ -12,12 +12,7 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 @SuppressWarnings("deprecation")
 public class _Test {
 
-	
-	void test() {
-		_Test tt = null;
-		boolean b = tt == this;
-		System.out.println(b);
-	}
+
 	/**
 	 * @param args
 	 */
@@ -31,8 +26,6 @@ public class _Test {
 
 		System.out.println(typeClass.getSimpleName());
 		
-
-		new _Test().test();
 		
 //		System.out.println((this == i2));
 

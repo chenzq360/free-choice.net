@@ -7,17 +7,20 @@ import net.freechoice.model.FC_Post;
 
 public interface IDao_Post extends IDao<FC_Post> {
 
+	String		ASCEND_ORDER = " order by ;
+	String		DESCEND_ORDER = " order by ;
+			
 	List<FC_Post> 	getPostsByAutor(int userId);
 
 	/**
-	 * 
 	 * @param start : java.sql.Date, not java.util.Date !
-	 * @param end
 	 * @return
 	 */
 	List<FC_Post>	getPostsBetween(Date start, Date end);
 	
 	List<FC_Post>	getPostsOnDate(Date date);
+	List<FC_Post>	getPostsAfterDate(Date date);
+	List<FC_Post>	getPostsBeforeDate(Date date);
 	/**
 	 * 
 	 * @param let month = [ x | x <-[1 .. 12] ]

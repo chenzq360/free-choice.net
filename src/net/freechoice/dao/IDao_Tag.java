@@ -7,7 +7,7 @@ import net.freechoice.model.FC_Tag;
 
 public interface IDao_Tag extends IDao<FC_Tag>{
 	
-	List<String>	getTagsByName(String name);
+	List<FC_Tag>	getTagsByName(String name);
 	
 	String			getTagName(int tagId);
 	

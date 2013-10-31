@@ -57,35 +57,37 @@
 			void			invalidate(T xyz);
 			void			invalidate(int xyzId);
 			void			update(T xyz);
-			List<FC_Xyz> 	getAllT();
+			List<FC_Xyz> 	getAll();
 	
 	DAO name conventions:
 			DAO interface is named as IDao_Xyz, e.g. 'IDao_User'
 									  ^ interface
-				and thet are put into package net.freechoice.dao
+				and they are put into package 'net.freechoice.dao'
 				
 			DAO implementation is named as DAO_Xxx, 'DAO_User'
-				and thet are put into package net.freechoice.dao.impl
+				and they are put into package 'net.freechoice.dao.impl'
 				
-	DAO 'get' convention:
+	DAO 'get' method name convention:
 		
-		get Xxx with parameter z such that z is one field of Xxx, use 'By'
+		getXxx(Yyy z) with parameter 'z' such that 'z' is one field of Xxx, use 'By' clause
 				getXxxByZzz(zzz)
 			e.g.	
-				List<FC_Post>	getPostsByMonth(int month);
+				List<FC_Tag>	getTagsByName(String name);
 		
-		get Xxx with parameter z such that z is not any field of Xxx(likely a entity 
-		 related to Xxx), use 'Of'
+		getXxx(Yyy z) with parameter 'z' such that z is not any field of Xxx(likely a entity 
+		 related to Xxx), use 'Of' clause
 			e.g.
 				List<FC_Post>	getPostsOfTag(int tagId);
 		
-		get Xxx with parameter z such that z is of time type, use 'on'
+		getXxx(Yyy z) with parameter 'z' such that 'z' is of time type, use 'on' clause
 			e.g.
 				List<FC_Transaction> getTransactionsOnDate(Date date);
 	
 		If the given parameter is not the unique field of this Object(i.e. not the id)
-		returns a List, even if there will always be one element only, in this list
-	
+		returns a List, even if there is one and one only element in this list
+			e.g.
+				List<FC_User> 	getUsersByName(String name);// login name, unique
+				
 		when return type is a list, user suffix 's'
 				getXxxsByYyy or getXxxsOfYyy
 			e.g.				      ^

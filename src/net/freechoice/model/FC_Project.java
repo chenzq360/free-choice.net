@@ -21,8 +21,6 @@ public class FC_Project implements Serializable, IModel {
 
 	private static final long serialVersionUID = -1314152664859372835L;
 
-	
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int				_id;

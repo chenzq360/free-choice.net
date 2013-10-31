@@ -3,7 +3,6 @@ package net.freechoice.dao;
 import java.util.List;
 
 import net.freechoice.model.FC_Project;
-import net.freechoice.model.FC_User;
 
 
 public interface IDao_Project extends IDao<FC_Project>{
