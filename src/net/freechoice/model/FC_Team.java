@@ -4,30 +4,20 @@ import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="FC_Team")
-public class FC_Team implements Serializable, IModel{
+public class FC_Team implements Serializable {
 	
 	private static final long serialVersionUID = -9181758135249535900L;
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private static final int serialID32 = (int)(serialVersionUID ^ (serialVersionUID >>> 32));
 	private int			_id;
+	private	boolean		is_valid;
 	
-	private	boolean		is_valid = true;
-
-//	@ManyToOne
-//	@JoinColumn(name="_id")
-	private int			id_leader_;
 	private Date		date_created;
+	private int			id_owner;
 	private String		name;
 	private String		tagline;
 	private String		appendix;
@@ -36,71 +26,58 @@ public class FC_Team implements Serializable, IModel{
 		// TODO Auto-generated constructor stub
 	}
 	
-	@Override
+	
 	public int get_id() {
 		return _id;
 	}
 
-	@Override
 	public void set_id(int _id) {
 		this._id = _id;
 	}
 
-	@Override
 	public boolean isIs_valid() {
 		return is_valid;
 	}
 
-	@Override
 	public void setIs_valid(boolean is_valid) {
 		this.is_valid = is_valid;
 	}
-
-
-	public int getId_leader_() {
-		return id_leader_;
-	}
-
-
-	public void setId_leader_(int id_leader_) {
-		this.id_leader_ = id_leader_;
-	}
-
 
 	public Date getDate_created() {
 		return date_created;
 	}
 
-
 	public void setDate_created(Date date_created) {
 		this.date_created = date_created;
 	}
 
+	public int getId_owner() {
+		return id_owner;
+	}
+
+	public void setId_owner(int id_owner) {
+		this.id_owner = id_owner;
+	}
 
 	public String getName() {
 		return name;
 	}
 
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 	public String getTagline() {
 		return tagline;
 	}
 
-
 	public void setTagline(String tagline) {
 		this.tagline = tagline;
 	}
 
-
 	public String getAppendix() {
 		return appendix;
 	}
-
 
 	public void setAppendix(String appendix) {
 		this.appendix = appendix;
@@ -109,13 +86,18 @@ public class FC_Team implements Serializable, IModel{
 
 	@Override
 	public boolean equals(Object o) {
-		return o instanceof FC_Team ? 
-				(((FC_Team)o)._id == this._id ? true : false) 
-				: false;
+		
+		if (this == o) {
+			return true;
+		} else if (o instanceof FC_Team) {
+			return ((FC_Team)o)._id == this._id;
+		} else {
+			return false;
+		}
 	}
-	
+    
 	@Override
 	public int hashCode() {
-		return this._id;
+		return this._id * 31 + serialID32;
 	}
 }

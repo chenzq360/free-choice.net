@@ -2,37 +2,21 @@ package net.freechoice.model;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="FC_User")
-public class FC_User implements Serializable, IModel{
+public class FC_User implements Serializable {
 
 	private static final long serialVersionUID = -464078696567349754L;
-	
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-//	@OneToMany(mappedBy="id_user_", targetEntity=FC_Post.class, cascade=CascadeType.ALL)
-//	@OneToMany(mappedBy="id_manager_", targetEntity=FC_Project.class, cascade=CascadeType.ALL)
+	private static final int serialID32 = (int)(serialVersionUID ^ (serialVersionUID >>> 32));
 	private int				_id;
+	private boolean			is_valid;//default true
 	
-	private boolean			is_valid = true;//default true
-	
-	@ManyToOne
-	@JoinColumn(name="_id")
-	private	int				id_profile_;//FK
-	
+	private	int				id_profile;//FK
+	private int 			id_group;//FK
 	private String			path_photo;
 	
 	private String			name_login;
@@ -46,109 +30,99 @@ public class FC_User implements Serializable, IModel{
 		// TODO Auto-generated constructor stub
 	}
 	
-
-	@Override
 	public int get_id() {
 		return _id;
 	}
 
-
-	@Override
 	public void set_id(int _id) {
 		this._id = _id;
 	}
 
-	@Override
 	public boolean isIs_valid() {
 		return is_valid;
 	}
 
-	@Override
 	public void setIs_valid(boolean is_valid) {
 		this.is_valid = is_valid;
 	}
 
-
 	public int getId_profile() {
-		return id_profile_;
+		return id_profile;
 	}
-
 
 	public void setId_profile(int id_profile) {
-		this.id_profile_ = id_profile;
+		this.id_profile = id_profile;
 	}
 
+	public int getId_group() {
+		return id_group;
+	}
+
+	public void setId_group(int id_group) {
+		this.id_group = id_group;
+	}
 
 	public String getPath_photo() {
 		return path_photo;
 	}
 
-
 	public void setPath_photo(String path_photo) {
 		this.path_photo = path_photo;
 	}
-
 
 	public String getName_login() {
 		return name_login;
 	}
 
-
 	public void setName_login(String name_login) {
 		this.name_login = name_login;
 	}
-
 
 	public String getName_display() {
 		return name_display;
 	}
 
-
 	public void setName_display(String name_display) {
 		this.name_display = name_display;
 	}
-
 
 	public String getPassword() {
 		return password;
 	}
 
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 
 	public String getTagline() {
 		return tagline;
 	}
 
-
 	public void setTagline(String tagline) {
 		this.tagline = tagline;
 	}
-
-
+	
 	public String getAppendix() {
 		return appendix;
 	}
-
-
 	public void setAppendix(String appendix) {
 		this.appendix = appendix;
 	}
-
-
+	
 	@Override
 	public boolean equals(Object o) {
 		
-		return this == o ? true 
-				: o instanceof FC_User ? 
-						(((FC_User)o)._id == this._id ? true : false)
-						: false;
+		if (this == o) {
+			return true;
+		} else if (o instanceof FC_User) {
+			return ((FC_User)o)._id == this._id;
+		} else {
+			return false;
+		}
 	}
+    
 	@Override
 	public int hashCode() {
-		return this._id;
+		return this._id * 31 + serialID32;
 	}
 }

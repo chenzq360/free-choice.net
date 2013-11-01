@@ -55,7 +55,7 @@ public class Dao_Post extends DaoAux< FC_Post> implements IDao_Post {
 	public List<FC_Post> getPostsOfTag(int tagId) {
 		return (List<FC_Post>)getSession().createSQLQuery(
 				"SELECT * FROM FC_Post WHERE _id IN"
-				+"(SELECT id_team_ FROM R_tag_post WHERE id_tag_ = " + tagId + " )"
+				+"(SELECT id_post_ FROM R_tag_post WHERE id_tag_ = " + tagId + " )"
 				).addEntity(FC_Post.class)
 				.list();
 	}

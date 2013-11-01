@@ -16,12 +16,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="FC_Account")
-public class FC_Account implements Serializable , IModel{
+public class FC_Account implements Serializable, IModel {
 
 	private static final long serialVersionUID = -8496712751903083205L;
-	
 	private static final int serialID32 = (int)(serialVersionUID ^ (serialVersionUID >>> 32));
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int 				_id;
@@ -46,10 +44,12 @@ public class FC_Account implements Serializable , IModel{
 		this._id = _id;
 	}
 
+
 	@Override
 	public boolean isIs_valid() {
 		return is_valid;
 	}
+
 
 	@Override
 	public void setIs_valid(boolean is_valid) {
@@ -80,6 +80,7 @@ public class FC_Account implements Serializable , IModel{
 		this.balance = balance;
 	}
 	
+	
 	@Override
 	public boolean equals(Object o) {
 		
@@ -96,5 +97,6 @@ public class FC_Account implements Serializable , IModel{
 	public int hashCode() {
 		return this._id * 31 + serialID32;
 	}
+
 	
 }

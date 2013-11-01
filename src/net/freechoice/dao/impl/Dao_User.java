@@ -19,21 +19,7 @@ public class Dao_User extends DaoAux<FC_User> implements IDao_User {
 		super(FC_User.class);
 		setSessionFactory(sessionFactory);
 	}
-	
-	@Override
-	public void invalidate(FC_User entity) {
-		
-		entity.setIs_valid(false);
-		getHibernateTemplate().update(entity);
-	}
 
-	@Override
-	public void invalidate(int id) {
-		
-		FC_User usr = this.getById(id);
-		usr.setIs_valid(false);
-		getHibernateTemplate().update(usr);
-	}
 
 	@SuppressWarnings("unchecked")
 	@Override

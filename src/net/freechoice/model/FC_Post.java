@@ -3,29 +3,25 @@ package net.freechoice.model;
 import java.io.Serializable;
 import java.sql.Time;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="FC_Post")
-public class FC_Post implements Serializable, IModel{
+public class FC_Post implements Serializable {
 
 	private static final long serialVersionUID = -7328287539453747388L;
+	private static final int serialID32 = (int)(serialVersionUID ^ (serialVersionUID >>> 32));
 
 	@Id
-	@OneToMany(mappedBy="id_post_", targetEntity=FC_Comment.class, cascade=CascadeType.ALL)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int				_id;
 	
-	private boolean 		is_valid;//default true
-	
-	@ManyToOne
-	@JoinColumn(name="_id")
+	private boolean 		is_valid = true;//default true
 	private int				id_author;// FK
 	
 	private Time			time_posted;//timestamp
@@ -42,22 +38,22 @@ public class FC_Post implements Serializable, IModel{
 		// TODO Auto-generated constructor stub
 	}
 	
-	@Override
+	
 	public int get_id() {
 		return _id;
 	}
 
-	@Override
+
 	public void set_id(int _id) {
 		this._id = _id;
 	}
 
-	@Override
+
 	public boolean isIs_valid() {
 		return is_valid;
 	}
 
-	@Override
+
 	public void setIs_valid(boolean is_valid) {
 		this.is_valid = is_valid;
 	}
@@ -145,13 +141,19 @@ public class FC_Post implements Serializable, IModel{
 	
 	@Override
 	public boolean equals(Object o) {
-		return o instanceof FC_Post ? 
-				(((FC_Post)o)._id == this._id ? true : false) 
-				: false;
+		
+		if (this == o) {
+			return true;
+		} else if (o instanceof FC_Post) {
+			return ((FC_Post)o)._id == this._id;
+		} else {
+			return false;
+		}
 	}
+    
 	@Override
 	public int hashCode() {
-		return this._id;
+		return this._id * 31 + serialID32;
 	}
 
 }

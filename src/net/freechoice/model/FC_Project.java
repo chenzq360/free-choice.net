@@ -5,37 +5,24 @@ import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 
 
 
 @Entity
 @Table(name="FC_Project")
-public class FC_Project implements Serializable, IModel {
+public class FC_Project implements Serializable{
 
 	private static final long serialVersionUID = -1314152664859372835L;
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private static final int serialID32 = (int)(serialVersionUID ^ (serialVersionUID >>> 32));
 	private int				_id;
 	
-	private boolean			is_valid = true;
+	private boolean			is_valid;
 	
-	@ManyToOne
-	@JoinColumn(name="_id")
 	private int 			id_manager_;
 	
-	private int 			id_team_;
-	
 	private Date			date_created;
-	
-	private String			name;
 	
 	private String			subject;
 	
@@ -45,22 +32,15 @@ public class FC_Project implements Serializable, IModel {
 		// TODO Auto-generated constructor stub
 	}
 	
-	@Override
 	public int get_id() {
 		return _id;
 	}
-
-	@Override
 	public void set_id(int _id) {
 		this._id = _id;
 	}
-
-	@Override
 	public boolean isIs_valid() {
 		return is_valid;
 	}
-
-	@Override
 	public void setIs_valid(boolean is_valid) {
 		this.is_valid = is_valid;
 	}
@@ -76,14 +56,6 @@ public class FC_Project implements Serializable, IModel {
 	public void setDate_created(Date date_created) {
 		this.date_created = date_created;
 	}
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getSubject() {
 		return subject;
 	}
@@ -96,26 +68,23 @@ public class FC_Project implements Serializable, IModel {
 	public void setAppendix(String appendix) {
 		this.appendix = appendix;
 	}
-	
-	public int getId_team_() {
-		return id_team_;
-	}
 
-	public void setId_team_(int id_team_) {
-		this.id_team_ = id_team_;
-	}
 	
 	@Override
 	public boolean equals(Object o) {
-		return o instanceof FC_Project ? 
-				(((FC_Project)o)._id == this._id ? true : false) 
-				: false;
+		
+		if (this == o) {
+			return true;
+		} else if (o instanceof FC_Project) {
+			return ((FC_Project)o)._id == this._id;
+		} else {
+			return false;
+		}
 	}
+    
 	@Override
 	public int hashCode() {
-		return this._id;
+		return this._id * 31 + serialID32;
 	}
-
-
 	
 }

@@ -6,30 +6,17 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="FC_Transaction")
-public class FC_Transaction implements Serializable, IModel {
+public class FC_Transaction implements Serializable {
 
 	private static final long serialVersionUID = -2333906984792981271L;
-	
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private static final int serialID32 = (int)(serialVersionUID ^ (serialVersionUID >>> 32));
 	private int 			_id;
-	
-	private boolean			is_valid = true;
-	
-//	@ManyToOne
-//	@JoinColumn(name="_id")
-	private int 			id_account_;
+	private boolean			is_valid;
 	
 	private Timestamp		time_committed;
 	private BigDecimal		amount;
@@ -38,19 +25,19 @@ public class FC_Transaction implements Serializable, IModel {
 		// TODO Auto-generated constructor stub
 	}
 	
-	@Override
+	
 	public int get_id() {
 		return _id;
 	}
-	@Override
+
 	public void set_id(int _id) {
 		this._id = _id;
 	}
-	@Override
+
 	public boolean isIs_valid() {
 		return is_valid;
 	}
-	@Override
+
 	public void setIs_valid(boolean is_valid) {
 		this.is_valid = is_valid;
 	}
@@ -71,26 +58,22 @@ public class FC_Transaction implements Serializable, IModel {
 		this.amount = amount;
 	}
 
-	public int getId_account_() {
-		return id_account_;
-	}
-
-
-	public void setId_account_(int id_account_) {
-		this.id_account_ = id_account_;
-	}
-
 	@Override
 	public boolean equals(Object o) {
-		return o instanceof FC_Transaction ? 
-				(((FC_Transaction)o)._id == this._id ? true : false) 
-				: false;
+		
+		if (this == o) {
+			return true;
+		} else if (o instanceof FC_Transaction) {
+			return ((FC_Transaction)o)._id == this._id;
+		} else {
+			return false;
+		}
 	}
+    
 	@Override
 	public int hashCode() {
-		return this._id;
+		return this._id * 31 + serialID32;
 	}
-
 
 
 }
